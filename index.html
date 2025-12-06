@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GiftBox — Gift Wealth That Grows</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* ---------- Reset ---------- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #050816;
+      --bg-elevated: #0b1020;
+      --fg: #f7f7ff;
+      --muted: #9ca3af;
+      --accent: #6366f1;
+      --accent-soft: rgba(99, 102, 241, 0.25);
+      --border-subtle: rgba(148, 163, 184, 0.4);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.65);
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      color: var(--fg);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ---------- Header / Nav ---------- */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(22px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.9),
+        rgba(2, 6, 23, 0.75),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 26px;
+      height: 26px;
+      border-radius: 10px;
+      background: conic-gradient(
+        from 160deg,
+        #6366f1,
+        #ec4899,
+        #f97316,
+        #22c55e,
+        #6366f1
+      );
+      box-shadow: 0 0 18px rgba(99, 102, 241, 0.8);
+    }
+
+    .logo-text {
+      font-weight: 650;
+      letter-spacing: 0.03em;
+      font-size: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #6366f1, #f97316);
+      transition: width 0.18s ease;
+    }
+
+    .nav-links a:hover {
+      color: #e5e7eb;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      padding: 7px 14px;
+      font-size: 13px;
+      background: transparent;
+      color: var(--fg);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.16s ease, border-color 0.16s ease,
+        transform 0.12s ease;
+    }
+
+    .btn:hover {
+      background: rgba(15, 23, 42, 0.8);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      border-color: transparent;
+      box-shadow: 0 10px 30px rgba(79, 70, 229, 0.6);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    /* ---------- Hero ---------- */
+
+    .hero {
+      padding: 56px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px 4px 4px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.8);
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .hero-kicker-pill {
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(22, 163, 74, 0.2);
+      color: #bbf7d0;
+      font-weight: 500;
+    }
+
+    .hero-title {
+      font-size: clamp(40px, 4.4vw, 52px);
+      line-height: 1.05;
+      font-weight: 730;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #6366f1, #f97316);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 26px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .hero-secondary {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-secondary span {
+      color: #e5e7eb;
+    }
+
+    /* ---------- CTA Buttons Override for Navigation ---------- */
+    .hero-ctas a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ---------- Footer ---------- */
+
+    footer {
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      padding: 20px 0 26px;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 40px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header>
+    <div class="wrap nav">
+      <div class="nav-left">
+        <div class="logo-mark"></div>
+        <div class="logo-text">GiftBox</div>
+      </div>
+      <nav class="nav-links">
+        <a href="gift-flow.html">Start a Gift</a>
+        <a href="brokers.html">For Brokers</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="gift-flow.html" class="btn btn-primary">Start a Gift</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+
+        <!-- Left side -->
+        <div>
+          <div class="hero-kicker">
+            <span class="hero-kicker-pill">New</span>
+            A gifting marketplace for stocks, baskets, SIPs.
+          </div>
+
+          <h1 class="hero-title">
+            Gift <span>wealth that grows</span> — not things that fade.
+          </h1>
+
+          <p class="hero-sub">
+            GiftBox lets parents gift stocks, rupee amounts, themed baskets,
+            or recurring SIPs — fulfilled securely through SEBI-regulated
+            demat transfers by partner brokers.
+          </p>
+
+          <div class="hero-ctas">
+            <a href="gift-flow.html" class="btn btn-primary">Start a Gift</a>
+            <a href="brokers.html" class="btn">For Brokers</a>
+          </div>
+
+          <div class="hero-secondary">
+            <span>Emotion of gifting</span> × Power of compounding × Regulated demat transfers.
+          </div>
+        </div>
+
+        <!-- Right card visual -->
+        <aside class="hero-card" style="
+          border-radius: 26px;
+          background: radial-gradient(circle at top, #1f2937 0, #020617 60%);
+          border: 1px solid rgba(148, 163, 184, 0.45);
+          box-shadow: var(--shadow-soft);
+          padding: 20px;
+        ">
+          <h3 style="margin-bottom:10px;font-size:15px;color:#e5e7eb;">
+            Live Preview — Gift Example
+          </h3>
+          <p style="font-size:13px;color:var(--muted);">
+            2 shares of Reliance → CHILD-XXXX-1234  
+            <br>Broker: Zerodha  
+            <br>Status: Processing (T+1)
+          </p>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 GiftBox — A financial gifting marketplace.
+  </footer>
+</div>
+</body>
+</html>
