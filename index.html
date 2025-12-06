@@ -248,11 +248,390 @@
       color: #e5e7eb;
     }
 
-    /* ---------- CTA Buttons Override for Navigation ---------- */
-    .hero-ctas a {
-      display: inline-flex;
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 18px;
+    }
+
+    .hero-stat {
+      min-width: 120px;
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 18px;
+      color: #e5e7eb;
+      margin-bottom: 3px;
+    }
+
+    /* Right hero card */
+
+    .hero-card {
+      border-radius: 26px;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 60%);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -80%;
+      background: radial-gradient(
+        circle at 10% 0,
+        rgba(96, 165, 250, 0.2),
+        transparent 55%
+      );
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-chip {
+      padding: 4px 8px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .hero-pill-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #a855f7, #1d4ed8);
+      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.6);
+    }
+
+    .hero-card-body {
+      position: relative;
+      z-index: 1;
+      border-radius: 18px;
+      padding: 14px 14px 10px;
+      background: radial-gradient(
+        circle at top left,
+        rgba(99, 102, 241, 0.2),
+        rgba(15, 23, 42, 0.95)
+      );
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .hero-card-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-card-row strong {
+      color: #e5e7eb;
+      font-size: 14px;
+    }
+
+    .hero-card-meter {
+      margin-top: 10px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+    }
+
+    .hero-card-meter-fill {
+      width: 82%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #22c55e, #a3e635, #facc15);
+    }
+
+    .hero-card-footer {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-mini {
+      padding: 8px 9px;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(
+        circle at 0 0,
+        rgba(56, 189, 248, 0.14),
+        transparent 55%
+      );
+    }
+
+    .hero-mini strong {
+      color: #e5e7eb;
+      display: block;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    /* ---------- Logos strip ---------- */
+
+    .logos {
+      padding: 10px 0 32px;
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+      background: radial-gradient(circle at top, #020617 0, #020617 60%);
+    }
+
+    .logos-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .logo-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .logo-pill {
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      background: radial-gradient(circle at top, #020617 0, #020617 70%);
+      min-width: 96px;
+      text-align: center;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    /* ---------- Sections ---------- */
+
+    section {
+      scroll-margin-top: 80px;
+    }
+
+    .section {
+      padding: 56px 0;
+    }
+
+    .section-header {
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 620;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 420px;
+    }
+
+    /* ---------- How it works ---------- */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+    }
+
+    .step-card {
+      padding: 16px 16px 18px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      background: radial-gradient(
+        circle at top,
+        rgba(15, 23, 42, 0.9),
+        #020617 60%
+      );
+    }
+
+    .step-tag {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      margin-bottom: 10px;
+      color: #e5e7eb;
+    }
+
+    .step-title {
+      font-size: 15px;
+      font-weight: 550;
+      margin-bottom: 4px;
+    }
+
+    .step-text {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ---------- Gift types (Collections) ---------- */
+
+    .collections-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 16px;
+    }
+
+    .collection-card {
+      border-radius: var(--radius-lg);
+      padding: 16px 14px;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      background: radial-gradient(
+        circle at top left,
+        rgba(96, 165, 250, 0.16),
+        #020617 70%
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .collection-header {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
       gap: 6px;
+    }
+
+    .collection-name {
+      font-size: 14px;
+      font-weight: 560;
+    }
+
+    .collection-tag {
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .collection-line {
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      overflow: hidden;
+      border: 1px solid rgba(30, 64, 175, 0.8);
+    }
+
+    .collection-fill {
+      height: 100%;
+      width: 68%;
+      background: linear-gradient(90deg, #22c55e, #eab308);
+    }
+
+    .collection-footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ---------- Features ---------- */
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+
+    .feature-card {
+      border-radius: var(--radius-md);
+      padding: 16px;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      background: radial-gradient(
+        circle at top,
+        rgba(147, 51, 234, 0.18),
+        #020617 65%
+      );
+      font-size: 13px;
+      color: var(--muted);
+      transition: transform 0.18s ease, box-shadow 0.18s ease,
+        border-color 0.18s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+      border-color: rgba(147, 51, 234, 0.75);
+    }
+
+    .feature-title {
+      font-size: 15px;
+      font-weight: 560;
+      margin-bottom: 4px;
+      color: #e5e7eb;
+    }
+
+    /* ---------- CTA band ---------- */
+
+    .cta-band {
+      border-radius: 22px;
+      padding: 22px 20px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: radial-gradient(
+        circle at top left,
+        rgba(129, 140, 248, 0.28),
+        rgba(15, 23, 42, 0.98) 65%
+      );
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cta-text-main {
+      font-size: 18px;
+      font-weight: 580;
+      margin-bottom: 4px;
+    }
+
+    .cta-text-sub {
+      font-size: 13px;
+      color: var(--muted);
     }
 
     /* ---------- Footer ---------- */
@@ -263,15 +642,49 @@
       font-size: 11px;
       color: var(--muted);
       margin-top: 40px;
-      text-align: center;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+    }
+
+    /* ---------- Responsive ---------- */
+
+    @media (max-width: 880px) {
+      .nav-links {
+        display: none;
+      }
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero {
+        padding-top: 40px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: 34px;
+      }
+      .logos-inner {
+        gap: 10px;
+      }
     }
   </style>
 </head>
-
 <body>
 <div class="page">
 
-  <!-- Header -->
+  <!-- Header / Nav -->
   <header>
     <div class="wrap nav">
       <div class="nav-left">
@@ -279,11 +692,14 @@
         <div class="logo-text">GiftBox</div>
       </div>
       <nav class="nav-links">
-        <a href="gift-flow.html">Start a Gift</a>
-        <a href="brokers.html">For Brokers</a>
+        <a href="#how">How it works</a>
+        <a href="#types">Gift types</a>
+        <a href="#features">Why GiftBox</a>
+        <a href="#cta">For brokers</a>
       </nav>
       <div class="nav-cta">
-        <a href="gift-flow.html" class="btn btn-primary">Start a Gift</a>
+        <button class="btn">Sign in</button>
+        <button class="btn btn-primary">Start a gift</button>
       </div>
     </div>
   </header>
@@ -292,60 +708,312 @@
   <main>
     <section class="hero">
       <div class="wrap hero-grid">
-
-        <!-- Left side -->
+        <!-- Left copy -->
         <div>
           <div class="hero-kicker">
             <span class="hero-kicker-pill">New</span>
-            A gifting marketplace for stocks, baskets, SIPs.
+            A gifting marketplace for stocks, baskets, and SIPs.
           </div>
-
           <h1 class="hero-title">
             Gift <span>wealth that grows</span> — not things that fade.
           </h1>
-
           <p class="hero-sub">
             GiftBox lets parents gift stocks, rupee amounts, themed baskets,
-            or recurring SIPs — fulfilled securely through SEBI-regulated
-            demat transfers by partner brokers.
+            or recurring SIPs to their children and loved ones — fulfilled
+            securely through SEBI-regulated demat transfers by partner brokers.
           </p>
-
           <div class="hero-ctas">
-            <a href="gift-flow.html" class="btn btn-primary">Start a Gift</a>
-            <a href="brokers.html" class="btn">For Brokers</a>
+            <button class="btn btn-primary">Start a gift in 2 minutes</button>
+            <button class="btn">Explore gift types</button>
+          </div>
+          <div class="hero-secondary">
+            <span>Emotion of gifting</span> × power of compounding × regulated demat transfers.
           </div>
 
-          <div class="hero-secondary">
-            <span>Emotion of gifting</span> × Power of compounding × Regulated demat transfers.
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong>92%</strong>
+              of parents say financial gifts feel “more meaningful” than physical ones.
+            </div>
+            <div class="hero-stat">
+              <strong>&lt; 5 min</strong>
+              to create a demat-to-demat gift with a partner broker.
+            </div>
           </div>
         </div>
 
-        <!-- Right card visual -->
-        <aside class="hero-card" style="
-          border-radius: 26px;
-          background: radial-gradient(circle at top, #1f2937 0, #020617 60%);
-          border: 1px solid rgba(148, 163, 184, 0.45);
-          box-shadow: var(--shadow-soft);
-          padding: 20px;
-        ">
-          <h3 style="margin-bottom:10px;font-size:15px;color:#e5e7eb;">
-            Live Preview — Gift Example
-          </h3>
-          <p style="font-size:13px;color:var(--muted);">
-            2 shares of Reliance → CHILD-XXXX-1234  
-            <br>Broker: Zerodha  
-            <br>Status: Processing (T+1)
-          </p>
-        </aside>
+        <!-- Right visual card -->
+        <aside class="hero-card" aria-hidden="true">
+          <div class="hero-card-header">
+            <div class="hero-chip">Live preview · Demat gift order</div>
+            <div class="hero-pill-badge"></div>
+          </div>
 
+          <div class="hero-card-body">
+            <div class="hero-card-row">
+              <span>Gift type</span>
+              <strong>2 shares of Reliance</strong>
+            </div>
+            <div class="hero-card-row">
+              <span>Recipient demat</span>
+              <strong>CHILD-XXXX-1234</strong>
+            </div>
+            <div class="hero-card-row">
+              <span>Broker</span>
+              <strong>Zerodha · SEBI-registered</strong>
+            </div>
+
+            <div class="hero-card-meter">
+              <div class="hero-card-meter-fill"></div>
+            </div>
+            <div class="hero-card-row" style="margin-top:8px;">
+              <span>Transfer status</span>
+              <strong>Processing · T+1 expected</strong>
+            </div>
+
+            <div class="hero-card-footer">
+              <div class="hero-mini">
+                <strong>From parent</strong>
+                “For your 10th birthday — your first step into ownership.”
+              </div>
+              <div class="hero-mini">
+                <strong>For child</strong>
+                Demat credit + digital gift card + portfolio view as they grow.
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Logos / trust strip -->
+    <section class="logos">
+      <div class="wrap logos-inner">
+        <div>Transfers executed by SEBI-regulated brokers you already trust.</div>
+        <div class="logo-line">
+          <div class="logo-pill">Zerodha</div>
+          <div class="logo-pill">Groww</div>
+          <div class="logo-pill">Upstox</div>
+          <div class="logo-pill">ICICI Direct</div>
+          <div class="logo-pill">Angel One</div>
+          <div class="logo-pill">HDFC Sky</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="section">
+      <div class="wrap">
+        <div class="section-header">
+          <div class="eyebrow">How it works</div>
+          <h2 class="section-title">From “happy birthday” to “you own this company” in three steps.</h2>
+          <p class="section-sub">
+            GiftBox orchestrates the emotional experience; SEBI-regulated brokers
+            execute the actual demat-to-demat transfer.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step-card">
+            <div class="step-tag">1</div>
+            <div class="step-title">Choose what you want to gift</div>
+            <div class="step-text">
+              Pick a specific stock, a rupee amount, a curated investment basket,
+              or set up a recurring SIP as a long-term gift.
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-tag">2</div>
+            <div class="step-title">Enter the recipient’s details</div>
+            <div class="step-text">
+              Add the child or recipient’s demat details, or help them open one with
+              a partner broker if they don’t have one yet.
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-tag">3</div>
+            <div class="step-title">Broker executes the transfer</div>
+            <div class="step-text">
+              A SEBI-registered broker completes the demat-to-demat transfer. The
+              recipient sees the holdings and a digital gift card in their inbox.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gift types -->
+    <section id="types" class="section">
+      <div class="wrap">
+        <div class="section-header">
+          <div class="eyebrow">Gift types</div>
+          <h2 class="section-title">Four ways to turn an occasion into long-term wealth.</h2>
+          <p class="section-sub">
+            GiftBox supports one-time and recurring gifts, so you can decide how
+            deep you want the compounding story to go.
+          </p>
+        </div>
+
+        <div class="collections-grid">
+          <article class="collection-card">
+            <header class="collection-header">
+              <div>
+                <div class="collection-name">Single stock gifts</div>
+                <div style="font-size:12px;color:var(--muted);">
+                  “You own part of this company.”
+                </div>
+              </div>
+              <div class="collection-tag">Direct ownership</div>
+            </header>
+            <div class="collection-line">
+              <div class="collection-fill"></div>
+            </div>
+            <footer class="collection-footer">
+              <span>From ₹500</span>
+              <span>Great for ages 8+</span>
+            </footer>
+          </article>
+
+          <article class="collection-card">
+            <header class="collection-header">
+              <div>
+                <div class="collection-name">Amount-based gifts</div>
+                <div style="font-size:12px;color:var(--muted);">
+                  Gift ₹500–₹50,000 and let a broker invest it.
+                </div>
+              </div>
+              <div class="collection-tag">Flexible</div>
+            </header>
+            <div class="collection-line">
+              <div class="collection-fill" style="width:62%;"></div>
+            </div>
+            <footer class="collection-footer">
+              <span>Set any amount</span>
+              <span>Auto-allocated</span>
+            </footer>
+          </article>
+
+          <article class="collection-card">
+            <header class="collection-header">
+              <div>
+                <div class="collection-name">Themed baskets</div>
+                <div style="font-size:12px;color:var(--muted);">
+                  Tech India · Bluechip · EV · Banking & more.
+                </div>
+              </div>
+              <div class="collection-tag">Diversified</div>
+            </header>
+            <div class="collection-line">
+              <div class="collection-fill" style="width:54%;"></div>
+            </div>
+            <footer class="collection-footer">
+              <span>Pre-curated</span>
+              <span>Lower risk than single picks</span>
+            </footer>
+          </article>
+
+          <article class="collection-card">
+            <header class="collection-header">
+              <div>
+                <div class="collection-name">SIP gifts</div>
+                <div style="font-size:12px;color:var(--muted);">
+                  Monthly investing as a recurring gift.
+                </div>
+              </div>
+              <div class="collection-tag">Long-term</div>
+            </header>
+            <div class="collection-line">
+              <div class="collection-fill" style="width:76%;"></div>
+            </div>
+            <footer class="collection-footer">
+              <span>₹500+/month</span>
+              <span>Perfect for 5–18 years</span>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why GiftBox -->
+    <section id="features" class="section">
+      <div class="wrap">
+        <div class="section-header">
+          <div class="eyebrow">Why GiftBox</div>
+          <h2 class="section-title">For parents, children, and brokers — everyone wins.</h2>
+          <p class="section-sub">
+            GiftBox sits between emotion and execution: it tells the story for
+            the family, and routes the transfer to the right broker.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <h3 class="feature-title">Emotionally rich, financially smart</h3>
+            <p>
+              Replace throwaway gifts with ownership. Children see real companies
+              in their demat, along with the story of why it was gifted.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <h3 class="feature-title">Marketplace of trusted brokers</h3>
+            <p>
+              Brokers plug into GiftBox to receive new orders. Parents keep their
+              broker relationships; GiftBox orchestrates the gifting experience.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <h3 class="feature-title">Built on regulated infrastructure</h3>
+            <p>
+              Transfers are handled via SEBI-regulated brokers and standard
+              demat-to-demat flows, with full auditability and KYC compliance.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <h3 class="feature-title">Made for parents and families</h3>
+            <p>
+              Designed around real life: birthdays, exam results, first salary,
+              festivals, and milestones where a financial gift feels just right.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA band -->
+    <section id="cta" class="section">
+      <div class="wrap">
+        <div class="cta-band">
+          <div>
+            <div class="cta-text-main">Ready to launch your first GiftBox?</div>
+            <div class="cta-text-sub">
+              Create a one-time gift, set up a SIP for your child, or talk to us
+              about broker integration — all from the same platform.
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button class="btn btn-primary">Start a gift now</button>
+            <button class="btn">I’m a broker · Join the marketplace</button>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
   <footer>
-    © 2025 GiftBox — A financial gifting marketplace.
+    <div class="wrap footer-inner">
+      <div>© 2025 GiftBox. Concept: financial gifting marketplace for demat-to-demat transfers.</div>
+      <div class="footer-links">
+        <a href="#how">How it works</a>
+        <a href="#types">Gift types</a>
+        <a href="#features">Why GiftBox</a>
+      </div>
+    </div>
   </footer>
+
 </div>
 </body>
 </html>
