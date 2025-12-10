@@ -11,19 +11,27 @@
     /* ===============================
        Overlay
     ================================ */
-    #loginOverlay.ladoo-panel-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 240ms ease;
-      z-index: 5000; /* high so it's above everything */
-    }
-    #loginOverlay.ladoo-panel-overlay.ladoo-open {
-      opacity: 1;
-      pointer-events: auto;
-    }
+   /* 🔥 FORCE OVERLAY ABOVE ALL THEME LAYERS */
+#loginOverlay.ladoo-panel-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(0,0,0,0.55) !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 240ms ease;
+  z-index: 999999999 !important;
+}
+
+#loginOverlay.ladoo-panel-overlay.ladoo-open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* 🔥 PANEL ABOVE OVERLAY */
+#loginPanel.ladoo-slide-panel {
+  z-index: 1000000000 !important;
+}
+
 
     /* ===============================
        Slide panel
