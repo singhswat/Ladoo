@@ -5,6 +5,100 @@
   <title>GiftBox — Gift Wealth That Grows</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="giftbox.css" />
+  <!-- Namespaced slide-panel styles to avoid colliding with giftbox.css -->
+  <style>
+    /* Namespaced overlay */
+    #loginOverlay.ladoo-panel-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 240ms ease;
+      z-index: 1200;
+    }
+    #loginOverlay.ladoo-panel-overlay.ladoo-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Namespaced slide panel */
+    #loginPanel.ladoo-slide-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: min(420px, 92vw);
+      background: #fff;
+      box-shadow: -18px 12px 40px rgba(13, 20, 30, 0.2);
+      transform: translateX(110%);
+      transition: transform 320ms cubic-bezier(.2,.9,.2,1);
+      z-index: 1250;
+      display: flex;
+      flex-direction: column;
+      will-change: transform;
+    }
+    #loginPanel.ladoo-slide-panel.ladoo-open {
+      transform: translateX(0);
+    }
+
+    /* Panel header */
+    #loginPanel.ladoo-slide-panel .ladoo-panel-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 18px 20px;
+      border-bottom: 1px solid #eee;
+    }
+    #loginPanel.ladoo-slide-panel .ladoo-panel-header h3 {
+      margin:0;
+      font-size:1.1rem;
+    }
+    .ladoo-panel-close {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 6px;
+    }
+
+    /* Panel body */
+    #loginPanel.ladoo-slide-panel .ladoo-panel-body {
+      padding: 18px 20px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    /* Scoped form fields to prevent global changes */
+    #loginPanel .ladoo-login-field {
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-bottom:12px;
+    }
+    #loginPanel .ladoo-login-field input {
+      padding:10px 12px;
+      border:1px solid #ddd;
+      border-radius:6px;
+      font-size: 14px;
+    }
+
+    #loginPanel .ladoo-panel-actions {
+      padding: 16px 20px;
+      border-top: 1px solid #f1f1f1;
+    }
+    /* Use existing .btn and .btn-primary classes for visual consistency but scope width */
+    #loginPanel .btn-primary.ladoo-full {
+      width:100%;
+      display:inline-block;
+      text-align:center;
+    }
+
+    @media (max-width:480px){
+      #loginPanel.ladoo-slide-panel { width: 100vw; }
+    }
+  </style>
 </head>
 <body>
 <div class="page">
@@ -22,8 +116,9 @@
         <a href="#features">Why GiftBox</a>
         <a href="brokers.html">GiftWealth Marketplace</a>
       </nav>
-      <div class="nav-cta">        
-        <a href="login.html" class="btn btn-primary">Sign in</a>
+      <div class="nav-cta">
+        <!-- Button opens namespaced panel -->
+        <button id="signInBtn" class="btn btn-primary" type="button" aria-controls="loginPanel" aria-expanded="false">Sign in</button>
         <a href="gift-flow.html" class="btn btn-primary">Start a gift</a>
       </div>
     </div>
@@ -198,10 +293,98 @@
     </div>
   </footer>
 
+  <!-- Namespaced slide panel markup (login) -->
+  <div id="loginOverlay" class="ladoo-panel-overlay" tabindex="-1" aria-hidden="true"></div>
+
+  <aside id="loginPanel" class="ladoo-slide-panel" role="dialog" aria-modal="true" aria-labelledby="loginTitle" aria-hidden="true">
+    <div class="ladoo-panel-header">
+      <h3 id="loginTitle">Sign in to GiftBox</h3>
+      <button class="ladoo-panel-close" id="panelCloseBtn" aria-label="Close login panel">&times;</button>
+    </div>
+    <div class="ladoo-panel-body">
+      <p>Sign in to manage gifts, view transfers and track portfolios.</p>
+
+      <form id="loginForm" action="login.html" method="get" aria-labelledby="loginTitle">
+        <div class="ladoo-login-field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="ladoo-login-field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Password" required>
+        </div>
+
+        <div class="ladoo-login-field" style="margin-top:8px;">
+          <a href="login.html" class="btn">Forgot password?</a>
+        </div>
+      </form>
+    </div>
+
+    <div class="ladoo-panel-actions">
+      <button type="submit" form="loginForm" class="btn btn-primary ladoo-full">Sign in</button>
+    </div>
+  </aside>
+
 </div>
+
+<!-- Namespaced slide panel behavior -->
+<script>
+  (function () {
+    const signInBtn = document.getElementById('signInBtn');
+    const loginPanel = document.getElementById('loginPanel');
+    const loginOverlay = document.getElementById('loginOverlay');
+    const panelClose = document.getElementById('panelCloseBtn');
+
+    function openPanel() {
+      loginPanel.classList.add('ladoo-open');
+      loginPanel.setAttribute('aria-hidden', 'false');
+      loginOverlay.classList.add('ladoo-open');
+      loginOverlay.setAttribute('aria-hidden', 'false');
+      signInBtn.setAttribute('aria-expanded', 'true');
+
+      // focus first input for convenience
+      const firstInput = loginPanel.querySelector('input');
+      if (firstInput) firstInput.focus();
+
+      // prevent body scroll while panel is open
+      document.documentElement.style.overflow = 'hidden';
+    }
+
+    function closePanel() {
+      loginPanel.classList.remove('ladoo-open');
+      loginPanel.setAttribute('aria-hidden', 'true');
+      loginOverlay.classList.remove('ladoo-open');
+      loginOverlay.setAttribute('aria-hidden', 'true');
+      signInBtn.setAttribute('aria-expanded', 'false');
+      document.documentElement.style.overflow = '';
+
+      // return focus
+      signInBtn.focus();
+    }
+
+    signInBtn.addEventListener('click', openPanel);
+    panelClose.addEventListener('click', closePanel);
+    loginOverlay.addEventListener('click', closePanel);
+
+    // close on escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && loginPanel.classList.contains('ladoo-open')) {
+        closePanel();
+      }
+    });
+
+    // Basic focus trap: keep focus inside the panel when open
+    document.addEventListener('focus', function (e) {
+      if (!loginPanel.classList.contains('ladoo-open')) return;
+      if (!loginPanel.contains(e.target)) {
+        e.stopPropagation();
+        const focusable = loginPanel.querySelector('input, button, a, [tabindex]:not([tabindex="-1"])');
+        if (focusable) focusable.focus();
+      }
+    }, true);
+
+  })();
+</script>
 </body>
 </html>
-
-
-
-
