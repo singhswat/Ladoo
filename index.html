@@ -5,191 +5,6 @@
   <title>GiftBox — Gift Wealth That Grows</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="giftbox.css" />
-
-  <!-- Namespaced slide-panel styles to avoid colliding with giftbox.css -->
-  <style>
-    /* ===============================
-       Overlay
-    ================================ */
-   /* 🔥 FORCE OVERLAY ABOVE ALL THEME LAYERS */
-#loginOverlay.ladoo-panel-overlay {
-  position: fixed !important;
-  inset: 0 !important;
-  background: rgba(0,0,0,0.55) !important;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 240ms ease;
-  z-index: 999999999 !important;
-}
-
-#loginOverlay.ladoo-panel-overlay.ladoo-open {
-  opacity: 1 !important;
-  pointer-events: auto !important;
-}
-
-/* 🔥 PANEL ABOVE OVERLAY */
-#loginPanel.ladoo-slide-panel {
-  z-index: 1000000000 !important;
-}
-
-
-    /* ===============================
-       Slide panel
-    ================================ */
-    #loginPanel.ladoo-slide-panel {
-      position: fixed;
-      top: 0;
-      right: 0;
-      height: 100vh;
-      width: min(420px, 92vw);
-      background: #fff;
-      box-shadow: -18px 12px 40px rgba(13, 20, 30, 0.2);
-      transform: translateX(110%);
-      transition: transform 320ms cubic-bezier(.2,.9,.2,1);
-      z-index: 6000; /* above overlay */
-      display: flex;
-      flex-direction: column;
-      will-change: transform;
-    }
-    #loginPanel.ladoo-slide-panel.ladoo-open {
-      transform: translateX(0);
-    }
-
-    /* Panel header */
-    #loginPanel .ladoo-panel-header {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding: 18px 20px;
-      border-bottom: 1px solid #eee;
-    }
-    #loginPanel .ladoo-panel-header h3 {
-      margin:0;
-      font-size:1.1rem;
-    }
-    .ladoo-panel-close {
-      background: transparent;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-      line-height: 1;
-      padding: 6px;
-    }
-
-    /* Panel body */
-    #loginPanel .ladoo-panel-body {
-      padding: 18px 20px;
-      overflow-y: auto;
-      flex: 1;
-      font-size: 0.95rem;
-    }
-
-    /* Steps (fade between phone step and OTP step) */
-    .ladoo-step {
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 220ms ease, visibility 220ms ease;
-      position: relative;
-    }
-    .ladoo-step.ladoo-step-active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    /* Form fields */
-    #loginPanel .ladoo-login-field {
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      margin-bottom:12px;
-    }
-    #loginPanel .ladoo-login-field label {
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-    #loginPanel .ladoo-login-field input[type="tel"],
-    #loginPanel .ladoo-login-field input[type="text"] {
-      padding:10px 12px;
-      border:1px solid #ddd;
-      border-radius:6px;
-      font-size: 14px;
-    }
-
-    /* Mobile input row */
-    .ladoo-phone-row {
-      display:flex;
-      align-items:center;
-      gap:6px;
-    }
-    .ladoo-phone-code {
-      padding: 10px 12px;
-      border-radius: 6px;
-      border: 1px solid #ddd;
-      background:#f7f7f7;
-      font-size: 0.9rem;
-      white-space: nowrap;
-    }
-    .ladoo-phone-input {
-      flex:1;
-    }
-
-    /* OTP row: 6 boxes */
-    .ladoo-otp-row {
-      display:flex;
-      gap:8px;
-      margin-top:8px;
-    }
-    .ladoo-otp-input {
-      width: 40px;
-      height: 44px;
-      text-align:center;
-      font-size:1.1rem;
-      border-radius:8px;
-      border:1px solid #ddd;
-    }
-
-    .ladoo-step-caption {
-      font-size: 0.83rem;
-      color:#777;
-      margin-top:4px;
-    }
-
-    /* Footer actions */
-    #loginPanel .ladoo-panel-actions {
-      padding: 16px 20px;
-      border-top: 1px solid #f1f1f1;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-    #loginPanel .btn-primary.ladoo-full {
-      width:100%;
-      display:inline-block;
-      text-align:center;
-    }
-    #loginPanel .ladoo-secondary-btn {
-      width:100%;
-      display:inline-block;
-      text-align:center;
-      border-radius: 8px;
-      padding: 0.6rem 0.8rem;
-      border:1px solid #ddd;
-      background:#fafafa;
-      font-size:0.9rem;
-      cursor:pointer;
-    }
-
-    .ladoo-helper {
-      font-size:0.8rem;
-      color:#888;
-      text-align:center;
-      margin-top:4px;
-    }
-
-    @media (max-width:480px){
-      #loginPanel.ladoo-slide-panel { width: 100vw; }
-    }
-  </style>
 </head>
 <body>
 <div class="page">
@@ -207,10 +22,9 @@
         <a href="#features">Why GiftBox</a>
         <a href="brokers.html">GiftWealth Marketplace</a>
       </nav>
-      <div class="nav-cta">
-        <!-- Button opens namespaced panel -->
-        <a href="gift-flow.html" id="signInBtn" class="btn btn-primary">Start a gift</a>        
-        <a href="gift-flow.html" class="btn btn-primary">Start a gift</a>       
+      <div class="nav-cta">        
+        <a href="login.html" class="btn btn-primary">Sign in</a>
+        <a href="gift-flow.html" class="btn btn-primary">Start a gift</a>
       </div>
     </div>
   </header>
@@ -237,7 +51,7 @@
             securely through SEBI-regulated demat transfers by partner brokers.
           </p>
 
-          <!-- CTA BUTTONS -->
+          <!-- ⭐ UPDATED CTA BUTTONS ⭐ -->
           <div class="hero-ctas">
             <a href="gift-flow.html" class="btn btn-primary">Start a gift in 2 minutes</a>
             <a href="#types" class="btn">Explore gift types</a>
@@ -353,7 +167,7 @@
             <div class="step-tag">3</div>
             <div class="step-title">Broker executes the transfer</div>
             <div class="step-text">
-              A SEBI-registered broker completes the transfer.
+              A SEBI-registered broker completes the transfer.  
               The recipient receives the holdings + digital gift.
             </div>
           </div>
@@ -361,7 +175,14 @@
       </div>
     </section>
 
-    <!-- You can add Gift Types, Why GiftBox, CTA sections here if needed -->
+    <!-- Gift Types -->
+    <!-- (UNCHANGED) -->
+
+    <!-- Why GiftBox -->
+    <!-- (UNCHANGED) -->
+
+    <!-- CTA -->
+    <!-- (UNCHANGED) -->
 
   </main>
 
@@ -377,234 +198,9 @@
     </div>
   </footer>
 
-  <!-- ===============================
-       OTP Login Slide Panel Markup
-  ================================ -->
-  <div id="loginOverlay" class="ladoo-panel-overlay" tabindex="-1" aria-hidden="true"></div>
-
-  <aside id="loginPanel"
-         class="ladoo-slide-panel"
-         role="dialog"
-         aria-modal="true"
-         aria-labelledby="loginTitle"
-         aria-hidden="true">
-
-    <div class="ladoo-panel-header">
-      <h3 id="loginTitle">Sign in to GiftBox</h3>
-      <button class="ladoo-panel-close" id="panelCloseBtn" aria-label="Close login panel">&times;</button>
-    </div>
-
-    <div class="ladoo-panel-body">
-      <p>Sign in with your mobile number to create and track gifts.</p>
-
-      <form id="otpLoginForm" novalidate>
-        <!-- Step 1: Enter phone -->
-        <div id="loginStepPhone" class="ladoo-step ladoo-step-active">
-          <div class="ladoo-login-field">
-            <label for="phone">Mobile number</label>
-            <div class="ladoo-phone-row">
-              <div class="ladoo-phone-code">+91</div>
-              <input id="phone" name="phone" type="tel" class="ladoo-phone-input"
-                     placeholder="9876543210" inputmode="tel" required />
-            </div>
-            <div class="ladoo-step-caption">
-              We’ll send a 6-digit OTP to this number.
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 2: Enter OTP -->
-        <div id="loginStepOtp" class="ladoo-step">
-          <div class="ladoo-login-field">
-            <label>Enter OTP</label>
-            <div class="ladoo-step-caption">
-              Enter the 6-digit code sent to your mobile.
-            </div>
-            <div class="ladoo-otp-row">
-              <input class="ladoo-otp-input" type="text" inputmode="numeric" maxlength="1" />
-              <input class="ladoo-otp-input" type="text" inputmode="numeric" maxlength="1" />
-              <input class="ladoo-otp-input" type="text" inputmode="numeric" maxlength="1" />
-              <input class="ladoo-otp-input" type="text" inputmode="numeric" maxlength="1" />
-              <input class="ladoo-otp-input" type="text" inputmode="numeric" maxlength="1" />
-              <input class="ladoo-otp-input" type="text" inputmode="numeric" maxlength="1" />
-            </div>
-            <div class="ladoo-step-caption">
-              Didn’t get the code? <a href="#" id="resendOtpLink">Resend OTP</a>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <div class="ladoo-panel-actions">
-      <!-- Step 1 actions -->
-      <button id="sendOtpBtn" type="button" class="btn btn-primary ladoo-full">
-        Send OTP
-      </button>
-
-      <!-- Step 2 actions -->
-      <button id="verifyOtpBtn" type="button" class="btn btn-primary ladoo-full" style="display:none;">
-        Verify & Continue
-      </button>
-      <button id="backToPhoneBtn" type="button" class="ladoo-secondary-btn" style="display:none;">
-        ← Edit mobile number
-      </button>
-
-      <div class="ladoo-helper">
-        By continuing, you agree to our Terms & Privacy Policy.
-      </div>
-    </div>
-  </aside>
-
 </div>
-
-<!-- ===============================
-     Slide Panel + OTP Behavior
-================================ -->
-<script>
-  (function () {
-    const signInBtn     = document.getElementById('signInBtn');
-    const loginPanel    = document.getElementById('loginPanel');
-    const loginOverlay  = document.getElementById('loginOverlay');
-    const panelClose    = document.getElementById('panelCloseBtn');
-
-    const stepPhone     = document.getElementById('loginStepPhone');
-    const stepOtp       = document.getElementById('loginStepOtp');
-    const phoneInput    = document.getElementById('phone');
-    const sendOtpBtn    = document.getElementById('sendOtpBtn');
-    const verifyOtpBtn  = document.getElementById('verifyOtpBtn');
-    const backToPhoneBtn= document.getElementById('backToPhoneBtn');
-    const resendOtpLink = document.getElementById('resendOtpLink');
-
-    const otpInputs     = Array.from(document.querySelectorAll('.ladoo-otp-input'));
-
-    function showStep(which) {
-      if (which === 'phone') {
-        stepPhone.classList.add('ladoo-step-active');
-        stepOtp.classList.remove('ladoo-step-active');
-        sendOtpBtn.style.display   = 'inline-block';
-        verifyOtpBtn.style.display = 'none';
-        backToPhoneBtn.style.display = 'none';
-      } else {
-        stepPhone.classList.remove('ladoo-step-active');
-        stepOtp.classList.add('ladoo-step-active');
-        sendOtpBtn.style.display   = 'none';
-        verifyOtpBtn.style.display = 'inline-block';
-        backToPhoneBtn.style.display = 'inline-block';
-      }
-    }
-
-    function openPanel() {
-      loginPanel.classList.add('ladoo-open');
-      loginPanel.setAttribute('aria-hidden', 'false');
-      loginOverlay.classList.add('ladoo-open');
-      loginOverlay.setAttribute('aria-hidden', 'false');
-      signInBtn.setAttribute('aria-expanded', 'true');
-
-      // reset state to phone step
-      showStep('phone');
-      phoneInput.value = '';
-      otpInputs.forEach(i => i.value = '');
-
-      if (phoneInput) phoneInput.focus();
-      document.documentElement.style.overflow = 'hidden';
-    }
-
-    function closePanel() {
-      loginPanel.classList.remove('ladoo-open');
-      loginPanel.setAttribute('aria-hidden', 'true');
-      loginOverlay.classList.remove('ladoo-open');
-      loginOverlay.setAttribute('aria-hidden', 'true');
-      signInBtn.setAttribute('aria-expanded', 'false');
-      document.documentElement.style.overflow = '';
-      signInBtn.focus();
-    }
-
-    // OTP auto-advance
-    otpInputs.forEach((input, index) => {
-      input.addEventListener('input', function(e) {
-        const val = e.target.value.replace(/\D/g,'');
-        e.target.value = val.slice(-1);
-        if (val && index < otpInputs.length - 1) {
-          otpInputs[index + 1].focus();
-        }
-      });
-
-      input.addEventListener('keydown', function(e) {
-        if (e.key === 'Backspace' && !e.target.value && index > 0) {
-          otpInputs[index - 1].focus();
-        }
-      });
-    });
-
-    // Wire buttons
-    signInBtn.addEventListener('click', openPanel);
-    panelClose.addEventListener('click', closePanel);
-    loginOverlay.addEventListener('click', closePanel);
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && loginPanel.classList.contains('ladoo-open')) {
-        closePanel();
-      }
-    });
-
-    // Send OTP (MVP: just fake it for now)
-    sendOtpBtn.addEventListener('click', function () {
-      const phone = phoneInput.value.trim();
-      // very basic validation
-      if (!phone || phone.length < 8) {
-        alert("Please enter a valid mobile number.");
-        phoneInput.focus();
-        return;
-      }
-
-      // TODO: call real API to send OTP here.
-      // e.g. fetch('/auth/send-otp', { method:'POST', body: JSON.stringify({ phone }) })
-
-      showStep('otp');
-      if (otpInputs[0]) otpInputs[0].focus();
-    });
-
-    backToPhoneBtn.addEventListener('click', function() {
-      showStep('phone');
-      phoneInput.focus();
-    });
-
-    // Resend OTP link (MVP stub)
-    if (resendOtpLink) {
-      resendOtpLink.addEventListener('click', function(e){
-        e.preventDefault();
-        // TODO: call resend API
-        alert("OTP resent (stub).");
-      });
-    }
-
-    // Verify OTP (MVP stub)
-    verifyOtpBtn.addEventListener('click', function () {
-      const code = otpInputs.map(i => i.value).join('');
-      if (code.length !== otpInputs.length) {
-        alert("Please enter the full OTP.");
-        return;
-      }
-
-      // TODO: call real API to verify OTP here.
-      // e.g. fetch('/auth/verify-otp', { method:'POST', body: JSON.stringify({ phone, code }) })
-
-      alert("OTP verified (stub). You can now redirect to dashboard.html or set auth state.");
-      closePanel();
-    });
-
-    // Basic focus trap
-    document.addEventListener('focus', function (e) {
-      if (!loginPanel.classList.contains('ladoo-open')) return;
-      if (!loginPanel.contains(e.target)) {
-        e.stopPropagation();
-        const focusable = loginPanel.querySelector('input, button, a, [tabindex]:not([tabindex="-1"])');
-        if (focusable) focusable.focus();
-      }
-    }, true);
-
-  })();
-</script>
 </body>
 </html>
+
+
+
