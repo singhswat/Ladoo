@@ -597,6 +597,94 @@ section {
   margin-bottom: 4px;
   color: #e5e7eb;
 }
+/* Center full-page layout */
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Popup card style */
+.card {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  text-align: left;
+}
+
+.card-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.card-subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+/* Form */
+.label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.input, .input-field {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 0.3rem;
+}
+
+/* Mobile input formatting */
+.mobile-input {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.country-code {
+  background: #eee;
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Buttons */
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  background: #3478f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #245fcb;
+}
+
+.footer-text {
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 1.2rem;
+  color: #bbb;
+}
+
+.link {
+  color: #3478f6;
+}
 
 /* ---------- CTA band ---------- */
 
